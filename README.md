@@ -1,19 +1,22 @@
 # badge
 
-*** 
+***
 
 ## Description
 
-TEOTWAHBEW is CLI command which display files in current directory. And special files such as Makefile or .gitignore in hightlighted colors.
-This colors is dsignated by ``` -C ```
-This software have several options that tell you detailed information such as file size.
-See the below options 
+TEOTWAHBEW is a CLI command that displays files in the current directory.  
+It highlights special files such as `Makefile` and `.gitignore` using distinct colors.
+
+Colors can be configured using the `-C` option.
+
+This software provides several options to display detailed information, such as file size.  
+See the options below.
 
 ## Options
 ```
--sd : Sorting new updated files
+-sd : Sort files by most recently updated
 
--c : display only files coded in programming languages
+-c : Display only source code files
 
 --color (color name) filename : Choose display color for dsignated file
 ```
