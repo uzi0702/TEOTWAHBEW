@@ -1,6 +1,6 @@
 # badge
 
-***
+[![Coverage Status](https://coveralls.io/repos/github/uzi0702/TEOTWAHBEW/badge.svg?branch=main)](https://coveralls.io/github/uzi0702/TEOTWAHBEW?branch=main)
 
 # Tagline
 TEOTWAHBEW is a CLI command like 'ls'
