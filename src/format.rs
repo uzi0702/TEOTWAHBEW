@@ -44,6 +44,47 @@ fn days_to_ymd(z: u64) -> (i64, u64, u64) {
     (y, m, d)
 }
 
+#[cfg(test)]
+mod tests {
+    use super::*;
+    use std::time::UNIX_EPOCH;
+
+    #[test]
+    fn human_size_bytes() {
+        assert_eq!(human_size(0), "0 B");
+        assert_eq!(human_size(512), "512 B");
+        assert_eq!(human_size(1023), "1023 B");
+    }
+
+    #[test]
+    fn human_size_kilobytes() {
+        assert_eq!(human_size(1024), "1.0 KB");
+        assert_eq!(human_size(1536), "1.5 KB");
+    }
+
+    #[test]
+    fn human_size_megabytes() {
+        assert_eq!(human_size(1024 * 1024), "1.0 MB");
+    }
+
+    #[test]
+    fn human_size_gigabytes() {
+        assert_eq!(human_size(1024 * 1024 * 1024), "1.0 GB");
+    }
+
+    #[test]
+    fn format_time_unix_epoch() {
+        assert_eq!(format_time(UNIX_EPOCH), "1970-01-01 00:00");
+    }
+
+    #[test]
+    fn format_time_known_date() {
+        // 2024-01-01 00:00:00 UTC = 1704067200 seconds since epoch
+        let t = UNIX_EPOCH + std::time::Duration::from_secs(1_704_067_200);
+        assert_eq!(format_time(t), "2024-01-01 00:00");
+    }
+}
+
 #[cfg(unix)]
 pub fn format_mode(meta: &fs::Metadata) -> String {
     let mode = meta.permissions().mode();
