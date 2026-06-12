@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>TEOTWAHBEW</title><link>https://uzi0702.github.io/TEOTWAHBEW/</link><description>Recent content on TEOTWAHBEW</description><generator>Hugo</generator><language>en-us</language><atom:link href="https://uzi0702.github.io/TEOTWAHBEW/index.xml" rel="self" type="application/rss+xml"/><item><title>Introduction</title><link>https://uzi0702.github.io/TEOTWAHBEW/introduction/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://uzi0702.github.io/TEOTWAHBEW/introduction/</guid><description>&lt;h1 id="teotwahbew"&gt;TEOTWAHBEW&lt;/h1&gt;&lt;p&gt;&lt;strong&gt;TEOTWAHBEW&lt;/strong&gt; (&lt;code&gt;teot&lt;/code&gt;) is a Rust-based CLI tool that lists files in the current directory — similar to &lt;code&gt;ls&lt;/code&gt;, but with colored highlights for special files such as &lt;code&gt;Makefile&lt;/code&gt; and &lt;code&gt;.gitignore&lt;/code&gt;.&lt;/p&gt;
+
+
+
+
+ 
+
+
+
+&lt;h2 id="installation"&gt;Installation&lt;/h2&gt;&lt;p&gt;Download the latest binary from &lt;a href="https://github.com/uzi0702/TEOTWAHBEW/releases"&gt;GitHub Releases&lt;/a&gt; and place it in your &lt;code&gt;PATH&lt;/code&gt;.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# Example (macOS / Linux)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;chmod +x teot
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;mv teot /usr/local/bin/
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+
+ 
+
+
+
+&lt;h2 id="basic-usage"&gt;Basic Usage&lt;/h2&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;teot
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Running &lt;code&gt;teot&lt;/code&gt; without any arguments lists all files and directories in the current directory, displaying:&lt;/p&gt;</description></item><item><title>Options</title><link>https://uzi0702.github.io/TEOTWAHBEW/options/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://uzi0702.github.io/TEOTWAHBEW/options/</guid><description>&lt;h1 id="options-1"&gt;Options&lt;/h1&gt;
+
+
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+
+
+&lt;h2 id="-sd--sort-by-date-1"&gt;-sd — Sort by Date&lt;/h2&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;teot -sd
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Sorts files by most recently updated (descending). If two files have the same timestamp, they are sorted alphabetically by name.&lt;/p&gt;
+
+
+
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+
+
+&lt;h2 id="-c--source-files-only-1"&gt;-c — Source Files Only&lt;/h2&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;teot -c
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Displays only programming source files. The following extensions are included:&lt;/p&gt;
+&lt;table&gt;
+	&lt;thead&gt;
+			&lt;tr&gt;
+					&lt;th&gt;Extension&lt;/th&gt;
+					&lt;th&gt;Language&lt;/th&gt;
+			&lt;/tr&gt;
+	&lt;/thead&gt;
+	&lt;tbody&gt;
+			&lt;tr&gt;
+					&lt;td&gt;&lt;code&gt;.rs&lt;/code&gt;&lt;/td&gt;
+					&lt;td&gt;Rust&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td&gt;&lt;code&gt;.py&lt;/code&gt;&lt;/td&gt;
+					&lt;td&gt;Python&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td&gt;&lt;code&gt;.c&lt;/code&gt;&lt;/td&gt;
+					&lt;td&gt;C&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td&gt;&lt;code&gt;.cpp&lt;/code&gt;&lt;/td&gt;
+					&lt;td&gt;C++&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td&gt;&lt;code&gt;.java&lt;/code&gt;&lt;/td&gt;
+					&lt;td&gt;Java&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td&gt;&lt;code&gt;.cs&lt;/code&gt;&lt;/td&gt;
+					&lt;td&gt;C#&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td&gt;&lt;code&gt;.js&lt;/code&gt;&lt;/td&gt;
+					&lt;td&gt;JavaScript&lt;/td&gt;
+			&lt;/tr&gt;
+	&lt;/tbody&gt;
+&lt;/table&gt;
+
+
+
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+
+
+&lt;h2 id="color--custom-color-1"&gt;&amp;ndash;color — Custom Color&lt;/h2&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;teot --color&lt;span style="color:#f92672"&gt;=&lt;/span&gt;&amp;lt;colorcode&amp;gt; &lt;span style="color:#f92672"&gt;[&lt;/span&gt;file_name&lt;span style="color:#f92672"&gt;]&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Sets the display color for a specific file. If &lt;code&gt;file_name&lt;/code&gt; is omitted, the color is applied to all files.&lt;/p&gt;</description></item><item><title>Examples</title><link>https://uzi0702.github.io/TEOTWAHBEW/examples/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://uzi0702.github.io/TEOTWAHBEW/examples/</guid><description>&lt;h1 id="examples"&gt;Examples&lt;/h1&gt;
+
+
+
+ 
+
+
+
+&lt;h2 id="list-all-files"&gt;List all files&lt;/h2&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;$ teot
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;2024-01-15 12:00 4.0K -rw-r--r-- Makefile
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;2024-01-14 09:30 1.2K -rw-r--r-- .gitignore
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;2024-01-13 18:45 8.3K -rw-r--r-- src/main.rs
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+
+ 
+
+
+
+&lt;h2 id="sort-by-last-updated"&gt;Sort by last updated&lt;/h2&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;$ teot -sd
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;2024-01-15 12:00 4.0K -rw-r--r-- Makefile
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;2024-01-14 09:30 1.2K -rw-r--r-- .gitignore
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;2024-01-13 18:45 8.3K -rw-r--r-- src/main.rs
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+
+ 
+
+
+
+&lt;h2 id="show-source-files-only"&gt;Show source files only&lt;/h2&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;$ teot -c
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;2024-01-13 18:45 8.3K -rw-r--r-- src/main.rs
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+
+ 
+
+
+
+&lt;h2 id="apply-a-color-to-a-file"&gt;Apply a color to a file&lt;/h2&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;$ teot --color&lt;span style="color:#f92672"&gt;=&lt;/span&gt;red Makefile
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;code&gt;Makefile&lt;/code&gt; will be displayed in red.&lt;/p&gt;</description></item></channel></rss>
