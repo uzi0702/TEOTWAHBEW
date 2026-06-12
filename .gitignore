@@ -70,3 +70,8 @@ Cargo.lock
 .ionide
 
 # End of https://www.toptal.com/developers/gitignore/api/rust,macos,visualstudiocode
+
+# Hugo
+docs/node_modules/
+docs/public/
+docs/.hugo_build.lock

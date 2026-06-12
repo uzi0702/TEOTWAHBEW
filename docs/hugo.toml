@@ -1,0 +1,12 @@
+baseURL = 'https://uzi0702.github.io/TEOTWAHBEW/'
+locale = 'en-us'
+title = 'TEOTWAHBEW'
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.parser]
+      autoHeadingIDType = "github-ascii"
+
+[module]
+  [[module.imports]]
+    path = "github.com/bep/docuapi"
