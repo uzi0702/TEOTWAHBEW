@@ -129,6 +129,34 @@ fn color_flag_adds_ansi_escape_to_all_files() {
 }
 
 #[test]
+fn completions_option_generates_files_for_all_shells() {
+    let dir = TempDir::new("completions");
+
+    let out = teot()
+        .arg("--completions")
+        .current_dir(dir.path())
+        .output()
+        .unwrap();
+
+    assert!(out.status.success());
+    let base = dir.path().join("completions");
+    for file in [
+        "bash/teot",
+        "elvish/teot",
+        "fish/teot",
+        "powershell/teot",
+        "zsh/_teot",
+    ] {
+        let path = base.join(file);
+        assert!(path.is_file(), "completion file should exist: {file}");
+        assert!(
+            fs::metadata(&path).unwrap().len() > 0,
+            "completion file should not be empty: {file}"
+        );
+    }
+}
+
+#[test]
 fn color_without_equal_fails_with_error_message() {
     let dir = TempDir::new("color_no_equal");
     dir.create_file("a.txt");

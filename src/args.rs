@@ -6,6 +6,7 @@ pub struct Config {
     pub source_only: bool,
     pub color_code: Option<String>,
     pub color_target: Option<String>,
+    pub completions: bool,
 }
 
 pub fn parse_args() -> Result<Config, String> {
@@ -29,12 +30,14 @@ pub(crate) fn parse_from(args: &[&str]) -> Result<Config, String> {
         source_only: false,
         color_code: None,
         color_target: None,
+        completions: false,
     };
     let mut i = 0;
     while i < args.len() {
         match args[i] {
-            "-sd" => cfg.sort_by_date = true,
+            "-sd" | "--sd" => cfg.sort_by_date = true,
             "-c" => cfg.source_only = true,
+            "--completions" => cfg.completions = true,
             "--color" => {
                 return Err(
                     "'--color' requires '=': use --color=<colorcode> (e.g. --color=31)"
@@ -115,6 +118,18 @@ mod tests {
         let cfg = parse_from(&["-sd", "-c"]).unwrap();
         assert!(cfg.sort_by_date);
         assert!(cfg.source_only);
+    }
+
+    #[test]
+    fn completions_flag() {
+        let cfg = parse_from(&["--completions"]).unwrap();
+        assert!(cfg.completions);
+    }
+
+    #[test]
+    fn sd_long_form_is_accepted() {
+        let cfg = parse_from(&["--sd"]).unwrap();
+        assert!(cfg.sort_by_date);
     }
 
     #[test]

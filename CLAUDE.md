@@ -77,3 +77,39 @@ docコメント
 - ビルドファイルの作成（just）
     - .github/scripts/build_docker.sh
     - github actionsにも追加（同資料34ページ）
+
+# 補完ファイルを出力する
+• コマンドライン引数にオプションが指定されれば、
+補完ファイルを出力する。
+• 対応するすべてのシェルに対応したファイルを出力する。
+1. Cargo.toml に clap_complete を追加する。
+• cargo add clap_complete
+2. コマンドラインオプションに complete を追加する。
+• #[arg(long, help="generate completion files",
+ default_value_t = false)]
+pub completions: bool,
+•下のようなファイルを gencomp.rsに置く。
+• main.rsで引数解析後、completions オプションが指定されていれば、
+generate("completions") を呼び出す。
+```
+use std::path::Path;
+use clap::{Command, CommandFactory};
+fn generate_impl(s: Shell, app: &mut Command, appname: &str, outdir: &Path, file: String) {
+ let destfile = outdir.join(file);
+ std::fs::create_dir_all(destfile.parent().unwrap()).unwrap();
+ if let Ok(mut dest) = std::fs::File::create(destfile) {
+ clap_complete::generate(s, app, appname, &mut dest);
+ }
+}
+pub(super) fn generate(outdir: &Path) {
+ use clap_complete::Shell::{Bash, Elvish, Fish, PowerShell, Zsh};
+ let appname = "lis";
+ let mut app = crate::Args::command();
+ app.set_bin_name(appname);
+ generate_impl(Bash, &mut app, appname, outdir, format!("bash/{appname}"));
+ generate_impl(Elvish, &mut app, appname, outdir, format!("elvish/{appname}"));
+ generate_impl(Fish, &mut app, appname, outdir, format!("fish/{appname}"));
+ generate_impl(PowerShell, &mut app, appname, outdir, format!("powershell/{appname}"));
+ generate_impl(Zsh, &mut app, appname, outdir, format!("zsh/_{appname}"));
+}
+```

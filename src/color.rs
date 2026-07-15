@@ -35,6 +35,7 @@ mod tests {
         Config {
             sort_by_date: false,
             source_only: false,
+            completions: false,
             color_code: None,
             color_target: None,
         }
@@ -67,6 +68,7 @@ mod tests {
             color_target: None,
             sort_by_date: false,
             source_only: false,
+            completions: false,
         };
         assert_eq!(entry_color("any_file.txt", false, &cfg), "\x1b[31m");
     }
@@ -78,6 +80,7 @@ mod tests {
             color_target: Some("Makefile".to_string()),
             sort_by_date: false,
             source_only: false,
+            completions: false,
         };
         assert_eq!(entry_color("Makefile", false, &cfg), "\x1b[31m");
     }
@@ -89,6 +92,7 @@ mod tests {
             color_target: Some("Makefile".to_string()),
             sort_by_date: false,
             source_only: false,
+            completions: false,
         };
         assert_eq!(entry_color("other.txt", false, &cfg), "");
     }

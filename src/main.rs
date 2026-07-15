@@ -2,6 +2,7 @@ mod args;
 mod color;
 mod filter;
 mod format;
+mod gencomp;
 
 use std::fs;
 use std::time::SystemTime;
@@ -19,6 +20,11 @@ fn main() {
             std::process::exit(1);
         }
     };
+
+    if cfg.completions {
+        gencomp::generate(std::path::Path::new("completions"));
+        return;
+    }
 
     let mut items: Vec<(String, fs::Metadata)> = match fs::read_dir(".") {
         Ok(rd) => rd
