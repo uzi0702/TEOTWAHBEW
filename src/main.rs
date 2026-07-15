@@ -12,7 +12,13 @@ use filter::is_source_file;
 use format::{format_mode, format_time, human_size};
 
 fn main() {
-    let cfg = parse_args();
+    let cfg = match parse_args() {
+        Ok(cfg) => cfg,
+        Err(e) => {
+            eprintln!("teot: {}", e);
+            std::process::exit(1);
+        }
+    };
 
     let mut items: Vec<(String, fs::Metadata)> = match fs::read_dir(".") {
         Ok(rd) => rd

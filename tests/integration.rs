@@ -129,6 +129,44 @@ fn color_flag_adds_ansi_escape_to_all_files() {
 }
 
 #[test]
+fn color_without_equal_fails_with_error_message() {
+    let dir = TempDir::new("color_no_equal");
+    dir.create_file("a.txt");
+
+    let out = teot()
+        .args(["--color", "31"])
+        .current_dir(dir.path())
+        .output()
+        .unwrap();
+
+    assert!(!out.status.success(), "--color without '=' should fail");
+    let stderr = String::from_utf8_lossy(&out.stderr);
+    assert!(
+        stderr.contains("--color=<colorcode>"),
+        "stderr should explain the correct form: {stderr}"
+    );
+}
+
+#[test]
+fn color_name_fails_with_error_message() {
+    let dir = TempDir::new("color_name");
+    dir.create_file("a.txt");
+
+    let out = teot()
+        .arg("--color=red")
+        .current_dir(dir.path())
+        .output()
+        .unwrap();
+
+    assert!(!out.status.success(), "--color=red should fail");
+    let stderr = String::from_utf8_lossy(&out.stderr);
+    assert!(
+        stderr.contains("invalid color code"),
+        "stderr should report the invalid code: {stderr}"
+    );
+}
+
+#[test]
 fn color_with_target_applies_only_to_named_file() {
     let dir = TempDir::new("color_target");
     dir.create_file("target.rs");

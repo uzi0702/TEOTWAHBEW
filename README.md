@@ -30,3 +30,28 @@ teot [--color=<color code>] [file]
 
 --color=(color code) [filename] : Choose display color for dsignated file
 ```
+
+## Color codes
+
+`--color` takes a numeric ANSI color code (not a color name like `red`).
+Note that the `=` is required: `--color 31` is an error.
+
+| Code | Color   |
+|------|---------|
+| 31   | red     |
+| 32   | green   |
+| 33   | yellow  |
+| 34   | blue    |
+| 35   | magenta |
+| 36   | cyan    |
+| 37   | white   |
+
+Compound codes such as `34;1` (bold blue) are also accepted.
+
+### Examples
+
+```
+teot --color=31              # show all files in red
+teot --color=32 Cargo.toml   # show only Cargo.toml in green
+teot --color='34;1' Makefile # show only Makefile in bold blue (quote the ';' for the shell)
+```
