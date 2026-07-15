@@ -70,3 +70,10 @@ docコメント
 •モジュール（ファイル）全体のコメント
 は、ファイル冒頭に//!で始まるコメン
 トに書く。
+
+# docker
+配布用のdocker fileの作成
+- ../20260626.pdfの26ページの画像のようなファイルを作成
+- ビルドファイルの作成（just）
+    - .github/scripts/build_docker.sh
+    - github actionsにも追加（同資料34ページ）
